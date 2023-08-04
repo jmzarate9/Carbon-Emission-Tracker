@@ -8,7 +8,7 @@
     margin-top: 7rem;
 }
 
-.container {
+.innerContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -80,6 +80,7 @@
     width: 100%;
     max-width: 200px;
     border-radius: 10px;
+    border: 1px solid;
 }
 
 .btnContainer {

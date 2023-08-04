@@ -1,0 +1,93 @@
+
+.outerContainer {
+    background-image: url("https://images.unsplash.com/photo-1574098261362-d93b77214382?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80");
+    background-size: cover;
+}
+
+.innerContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    width: 1000px;
+    height: 500px;
+    background-color: rgba(245, 235, 235, 0.317);
+    border-radius: 10px;
+}
+
+.content h2 {
+    color: #476072;
+    margin-bottom: 2rem;
+}
+
+.content h2:hover {
+    color: #13334C;
+}
+
+.blockquote {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-top: 1rem;
+    margin-right: 6rem;
+    border-right: 2px solid rgba(255, 255, 255, 0.265);
+    font-size: 2rem;
+    letter-spacing: 3px;
+    color: #000;
+}
+
+.formGroup {
+    margin-bottom: 1rem;
+}
+
+.formGroup label {
+    display: flex;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.input {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 10px;
+    width: 350px;
+    border: none;
+}
+
+.registerButton {
+    padding: 0.8rem 1.5rem;
+    background-color: #476072;
+    color: #fff;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    width: 350px;
+    margin-top: 1rem;
+}
+
+.registerButton:hover {
+    background-color: #13334C;
+}
+
+.content p {
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+
+.hyperlink {
+    text-decoration: none;
+}
+
+.hyperlink:hover {
+    color: #13334C;;
+}

@@ -44,7 +44,7 @@ const FuelCombustion = () => {
         <>
         <Navbar />
         <div className={fuelCombustionStyles.outerContainer}>
-            <div className={fuelCombustionStyles.container}>
+            <div className={fuelCombustionStyles.innerContainer}>
             <div className={fuelCombustionStyles.infoContainer}>
                 <h3>Fuel Combustion Estimate Information</h3>
                 <p>

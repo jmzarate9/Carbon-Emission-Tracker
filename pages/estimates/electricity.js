@@ -43,7 +43,7 @@ const Electricity = () => {
         <>
             <Navbar />
             <div className={electricityStyles.outerContainer}>
-                <div className={electricityStyles.container}>
+                <div className={electricityStyles.innerContainer}>
                     <div className={electricityStyles.infoContainer}>
                         <h3>Electricity Estimate Information</h3>
                         <p>
@@ -130,8 +130,3 @@ const Electricity = () => {
 };
 
 export default Electricity;
-
-//TODO: Add the links for the country's ISO. Add also the Parameter	Type Description
-    // https://faint-class-d56.notion.site/4b4f41db73254b4b915ba01d55eba7e7?v=4ad0efe7763540ab801fadd9f3bf1ce0
-    // https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes
-    // Add the Electricity.js in the pages electricity.js

@@ -51,7 +51,7 @@ const FlightEstimate = () => {
         <>
             <Navbar />
             <div className={flightStyles.outerContainer}>
-                <div className={flightStyles.container}>
+                <div className={flightStyles.innerContainer}>
                     <div className={flightStyles.infoContainer}>
                         <h3>Flights Estimate Information</h3>
                         <p>
