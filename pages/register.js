@@ -3,9 +3,11 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { firebaseAuth } from "../firebase-config/config";
+import useAuth from "@/components/auth";
 import registerStyles from "@/styles/Register.module.css";
 
 const Register = () => {
+    
     const router = useRouter();
 
     const [email, setEmail] = useState("");
@@ -14,21 +16,22 @@ const Register = () => {
     const [errorMessage, setErrorMessage] = useState('');
 
     const registerUser = async (e) => {
-        try {
-            e.preventDefault();
-            setErrorMessage("");
+        e.preventDefault();
+        setErrorMessage("");
+
+        if (password !== confirmPassword) {
+            setErrorMessage("Passwords do not match");
+            return;
+        }
+
+        try {    
             await createUserWithEmailAndPassword(firebaseAuth, email, password);
             router.push('/login');
         } catch (error) {
             setErrorMessage(error?.message ?? 'Failed to register');
         }
-
-        // if (password !== confirmPassword) {
-        //     setErrorMessage('Password not match');
-        // } else {
-        //     setErrorMessage('Password match');
-        // }
     }
+    useAuth(); // authentication
 
 
     return (
@@ -89,5 +92,3 @@ const Register = () => {
 }
 
 export default Register;
-
-//TODO: if the user press the "Sign Up" button they should be redirected to the login page

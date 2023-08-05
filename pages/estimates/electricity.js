@@ -3,8 +3,10 @@ import Link from 'next/link';
 import Navbar from '/components/Navbar';
 import electricityStyles from '@/styles/ElectricityEstimate.module.css';
 import { estimateElectricity } from '@/pages/api/estimate';
+import useAuth from '@/components/auth';
 
 const Electricity = () => {
+    useAuth();
     const [electricityUnit, setElectricityUnit] = useState('');
     const [electricityValue, setElectricityValue] = useState('');
     const [country, setCountry] = useState('');

@@ -27,9 +27,8 @@
     color: #EEEDED;
 }
 
-.section p {
+/* .section p {
     font-size: 1rem;
-    /* color: #; */
     margin-top: 1rem;
     color: #EEEDED;
 }
@@ -40,7 +39,7 @@
 
 .section p a:hover {
     color: #13334C;
-}
+} */
 
 .buttons {
     display: flex;

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { firebaseAuth } from "../firebase-config/config";
+import useAuth from "@/components/auth";
 import loginStyles from "@/styles/Login.module.css";
 
 const Login = () => {
@@ -13,15 +14,17 @@ const Login = () => {
     const [errorMessage, setErrorMessage] = useState('');
 
     const loginUser = async (e) => {
+        e.preventDefault();
+        setErrorMessage("");
         try {
-            e.preventDefault();
-            setErrorMessage("");
             await signInWithEmailAndPassword(firebaseAuth, email, password);
             router.push('/');
         } catch (error) {
             setErrorMessage(error?.message ?? 'Failed to log in');
         }
     }
+    
+    useAuth(); // authentication
     
 
     return (
@@ -73,7 +76,7 @@ const Login = () => {
 export default Login;
 
 //DONE // TODO: if the user press the "Sign In" button they should be redirected to the home page
-//TODO: if the user already signed in, remove the "get started" button and change it to sign out
-//TODO: if the user cant access the "estimates" if they are not signed in or registered.
+//DONE//TODO: if the user already signed in, remove the "get started" button and change it to sign out
+//DONE//TODO: if the user cant access the "estimates" if they are not signed in or registered.
 //TODO: create a swal or any similar to sweetalert
 //TODO: Also show the necessary information like (email, password not found or match)

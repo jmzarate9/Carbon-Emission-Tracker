@@ -1,11 +1,13 @@
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { firebaseAuth } from "../firebase-config/config";
 import navbarStyles from './styles/Navbar.module.css';
 
 const Navbar = () => {
     const router = useRouter();
     const [showDropdown, setShowDropdown] = useState(false);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
 
     const handleLogoClick = () => {
         router.push('/');
@@ -20,7 +22,20 @@ const Navbar = () => {
     };
 
     const handleLogin = () => {
-        router.push('/login');
+        if (isAuthenticated) {
+            // User is authenticated, sign out
+            firebaseAuth.signOut()
+                .then(() => {
+                    // Redirect to home after sign out
+                    router.push('/');
+                })
+                .catch((error) => {
+                    console.error('Error signing out:', error);
+                });
+        } else {
+            // User is not authenticated, go to login page
+            router.push('/login');
+        }
     };
 
     const handleEstimatesMouseEnter = () => {
@@ -30,6 +45,15 @@ const Navbar = () => {
     const handleEstimatesMouseLeave = () => {
     setShowDropdown(false);
     };
+
+    // Handle the Authentication
+    useEffect(() => {
+        const unsubscribe = firebaseAuth.onAuthStateChanged((user) => {
+            setIsAuthenticated(!!user); // Convert to boolean value
+        });
+
+        return () => unsubscribe();
+    }, []);
 
     return (
         <nav className={navbarStyles.navbar}>
@@ -60,7 +84,9 @@ const Navbar = () => {
                 </li>
                 <li className={navbarStyles.navItem} onClick={handleAboutClick}>About</li>
                 <li className={navbarStyles.navItem} onClick={handleLearnClick}>Carbon Emissions</li>
-                <li className={navbarStyles.navItem} onClick={handleLogin}><button className={navbarStyles.btn}>Get Started</button></li>
+                <li className={navbarStyles.navItem} onClick={handleLogin}>
+                    {isAuthenticated ? <button className={navbarStyles.btn}>Sign Out</button> : <button className={navbarStyles.btn}>Get Started</button>}
+                </li>
             </ul>
         </nav>
 
@@ -69,4 +95,4 @@ const Navbar = () => {
 
 export default Navbar;
 
-//TODO: If the user is logged in change the "Get Started" to Sign
+//DONE//TODO: If the user is logged in change the "Get Started" to Sign Out

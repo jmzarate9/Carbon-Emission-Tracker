@@ -3,9 +3,11 @@ import Link from 'next/link';
 import Navbar from '/components/Navbar';
 import fuelCombustionStyles from '@/styles/FuelsEstimate.module.css'; 
 import { estimateFuel } from '@/pages/api/estimate'; 
-import { Spinner } from '@chakra-ui/react'
+// import { Spinner } from '@chakra-ui/react'
+import useAuth from '@/components/auth';
 
 const FuelCombustion = () => {
+    useAuth();
     const [fuelSourceType, setFuelSourceType] = useState('');
     const [fuelSourceUnit, setFuelSourceUnit] = useState('');
     const [fuelSourceValue, setFuelSourceValue] = useState('');

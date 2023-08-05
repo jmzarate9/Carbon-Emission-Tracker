@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Navbar from '/components/Navbar';
 import flightStyles from '@/styles/FlightEstimate.module.css';
-import { estimateFlight } from '@/pages/api/estimate'; 
+import { estimateFlight } from '@/pages/api/estimate';
+import useAuth from '@/components/auth'; 
 
 const FlightEstimate = () => {
+    useAuth();
     const [passengers, setPassengers] = useState('');
     const [departureAirport1, setDepartureAirport1] = useState('');
     const [destinationAirport1, setDestinationAirport1] = useState('');

@@ -30,7 +30,7 @@ const Home = () => {
                         <button className={landingPageStyles.btn} onClick={handleLearnMore}>Learn More</button>
 
                     </div>
-                    <p><a href='/register'>Register</a> or <a href='/login'>Login</a> to access the carbon emission services.</p>
+                    {/* <p><a href='/register'>Register</a> or <a href='/login'>Login</a> to access the carbon emission services.</p> */}
                 </section>
             </main>
         </div>
