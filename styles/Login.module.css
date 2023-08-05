@@ -32,14 +32,8 @@
     color: #13334C;
 }
 
-.blockquote {
-    text-align: center;
-    margin-top: 1rem;
-    margin-right: 6rem;
-    border-right: 2px solid rgba(255, 255, 255, 0.265);
-    font-size: 2rem;
-    letter-spacing: 3px;
-    color: #000;
+.form {
+    margin-left: 3rem;
 }
 
 .formGroup {
@@ -60,7 +54,17 @@
     border: none;
 }
 
-.registerButton {
+.blockquote {
+    text-align: center;
+    margin-top: 1rem;
+    margin-left: 3rem;
+    border-left: 2px solid rgba(255, 255, 255, 0.265);
+    font-size: 2rem;
+    letter-spacing: 3px;
+    color: #000;
+}
+
+.loginButton {
     padding: 0.8rem 1.5rem;
     background-color: #476072;
     color: #fff;
@@ -72,7 +76,7 @@
     margin-top: 1rem;
 }
 
-.registerButton:hover {
+.loginButton:hover {
     background-color: #13334C;
 }
 
@@ -88,9 +92,4 @@
 
 .hyperlink:hover {
     color: #13334C;;
-}
-
-.errorMessage {
-    color: red;
-    margin-top: 0.5rem;
 }

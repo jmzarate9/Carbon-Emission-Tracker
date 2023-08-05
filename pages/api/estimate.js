@@ -6,7 +6,7 @@ export const estimateElectricity = async (electricityData) => {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${process.env.API_KEY}`,
+                "Authorization": `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
             },
             body: JSON.stringify(electricityData),
         });
@@ -31,7 +31,7 @@ export const estimateFlight = async (flightsData) => {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${process.env.API_KEY}`,
+                "Authorization": `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
             },
             body: JSON.stringify(flightsData),
         });
@@ -55,7 +55,7 @@ export const estimateFuel = async (fuelData) => {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${process.env.API_KEY}`,
+                "Authorization": `Bearer ${process.env.NEXT_PUBLIC_API_KEY}`,
             },
             body: JSON.stringify(fuelData),
         });
