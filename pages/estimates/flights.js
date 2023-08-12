@@ -77,10 +77,10 @@ const FlightEstimate = () => {
                                 <strong>Legs:</strong> array of Leg objects - see below for more details on the Leg object.
                             </li>
                             <li>
-                                <strong>Departure Airport:</strong> The departure airport <a href="https://www.iata.org/en/publications/directories/code-search/">IATA Code</a>.
+                                <strong>Departure Airport:</strong> The departure airport <a href="https://www.iata.org/en/publications/directories/code-search/" target="_blank" rel="noopener noreferrer">IATA Code</a>.
                             </li>
                             <li>
-                                <strong>Destination Airport:</strong> The destination airport <a href="https://www.iata.org/en/publications/directories/code-search/">IATA Code</a>.
+                                <strong>Destination Airport:</strong> The destination airport <a href="https://www.iata.org/en/publications/directories/code-search/" target="_blank" rel="noopener noreferrer">IATA Code</a>.
                             </li>
                         </ul>
                     </div>

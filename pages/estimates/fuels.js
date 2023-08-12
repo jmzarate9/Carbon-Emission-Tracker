@@ -63,10 +63,10 @@ const FuelCombustion = () => {
                     <strong>Type:</strong> fuel_combustion
                 </li>
                 <li>
-                    <strong>Fuel Source Type:</strong> The api_name of the fuel source you want to calculate combustion emissions from. The full list of fuel sources available can be found <a href="https://faint-class-d56.notion.site/Carbon-Interface-Fuel-Sources-0166b59ec1514984895cc7dd35836392">here</a>.
+                    <strong>Fuel Source Type:</strong> The api_name of the fuel source you want to calculate combustion emissions from. The full list of fuel sources available can be found <a href="https://faint-class-d56.notion.site/Carbon-Interface-Fuel-Sources-0166b59ec1514984895cc7dd35836392" target="_blank" rel="noopener noreferrer">here</a>.
                 </li>
                 <li>
-                    <strong>Fuel Source Unit:</strong> The unit of the fuel_source that you want combustion emissions from. Units are specific to the fuel_source_type, so please view the units available per fuel source <a href="https://faint-class-d56.notion.site/Carbon-Interface-Fuel-Sources-0166b59ec1514984895cc7dd35836392">here</a>.
+                    <strong>Fuel Source Unit:</strong> The unit of the fuel_source that you want combustion emissions from. Units are specific to the fuel_source_type, so please view the units available per fuel source <a href="https://faint-class-d56.notion.site/Carbon-Interface-Fuel-Sources-0166b59ec1514984895cc7dd35836392" target="_blank" rel="noopener noreferrer">here</a>.
                 </li>
                 <li>
                     <strong>Fuel Source Value:</strong> Amount of the above specific unit and fuel source that you want an emissions estimate for.
