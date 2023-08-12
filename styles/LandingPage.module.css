@@ -27,20 +27,6 @@
     color: #EEEDED;
 }
 
-/* .section p {
-    font-size: 1rem;
-    margin-top: 1rem;
-    color: #EEEDED;
-}
-
-.section p a {
-    color: #EEEDED;
-}
-
-.section p a:hover {
-    color: #13334C;
-} */
-
 .buttons {
     display: flex;
     justify-content: center;
