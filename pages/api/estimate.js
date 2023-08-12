@@ -72,5 +72,4 @@ export const estimateFuel = async (fuelData) => {
     }
 };
 
-//TODO: Implement a text if the user input a wrong value or type 
 
