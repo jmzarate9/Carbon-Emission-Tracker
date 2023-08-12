@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Roboto+Condensed:wght@400;700&display=swap');
+
 
 .outerContainer {
-    background-image: url("https://images.unsplash.com/photo-1574098261362-d93b77214382?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80");
-    background-size: cover;
+    background-image: linear-gradient(to bottom, #9ccaeb, #8bb5d8, #7aa0c4, #6a8cb1, #5b789e, #516b92, #485e85, #3f5279, #384a70, #314167, #2b395f, #243156);
+    
 }
 
 .innerContainer {
@@ -37,9 +39,11 @@
     margin-top: 1rem;
     margin-right: 6rem;
     border-right: 2px solid rgba(255, 255, 255, 0.265);
-    font-size: 2rem;
+    font-size: 1.8rem;
     letter-spacing: 3px;
     color: #000;
+    font-family: 'Merriweather', serif;
+    line-height: 1.5;
 }
 
 .formGroup {
@@ -61,19 +65,25 @@
 }
 
 .registerButton {
+    background-image: linear-gradient(to right, #314755 0%, #26a0da  51%, #314755  100%);
+    margin-top: 2rem;
     padding: 0.8rem 1.5rem;
-    background-color: #476072;
-    color: #fff;
-    font-size: 1rem;
-    border: none;
-    border-radius: 8px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: white;            
+    border-radius: 10px;
     cursor: pointer;
     width: 350px;
-    margin-top: 1rem;
+    border: none;
+    font-size: 1rem;
 }
 
 .registerButton:hover {
-    background-color: #13334C;
+    background-position: right center; 
+    color: #fff;
+    text-decoration: none;
 }
 
 .content p {
@@ -88,9 +98,4 @@
 
 .hyperlink:hover {
     color: #13334C;;
-}
-
-.errorMessage {
-    color: red;
-    margin-top: 0.5rem;
 }

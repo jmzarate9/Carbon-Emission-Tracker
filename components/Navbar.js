@@ -2,6 +2,7 @@ import { useRouter } from 'next/router';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { firebaseAuth } from "../firebase-config/config";
+import Swal from 'sweetalert2';
 import navbarStyles from './styles/Navbar.module.css';
 
 const Navbar = () => {
@@ -23,20 +24,23 @@ const Navbar = () => {
 
     const handleLogin = () => {
         if (isAuthenticated) {
-            // User is authenticated, sign out
             firebaseAuth.signOut()
                 .then(() => {
-                    // Redirect to home after sign out
                     router.push('/');
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Successfully Signed Out!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
                 })
                 .catch((error) => {
                     console.error('Error signing out:', error);
                 });
         } else {
-            // User is not authenticated, go to login page
             router.push('/login');
         }
-    };
+    }
 
     const handleEstimatesMouseEnter = () => {
         setShowDropdown(true);
@@ -46,53 +50,51 @@ const Navbar = () => {
     setShowDropdown(false);
     };
 
-    // Handle the Authentication
+
     useEffect(() => {
         const unsubscribe = firebaseAuth.onAuthStateChanged((user) => {
-            setIsAuthenticated(!!user); // Convert to boolean value
+            setIsAuthenticated(!!user); 
         });
 
         return () => unsubscribe();
     }, []);
+
+    const shouldRenderNavigation = !['/login', '/register'].includes(router.pathname);
 
     return (
         <nav className={navbarStyles.navbar}>
             <div className={navbarStyles.logo} onClick={handleLogoClick}>
                 Carbon Emissions Tracker
             </div>
-            <ul className={navbarStyles.navList}>
-                <li className={`${navbarStyles.navItem} ${navbarStyles.estimates}`} 
-                onMouseEnter={handleEstimatesMouseEnter}
-                onMouseLeave={handleEstimatesMouseLeave}>
-                Estimates
-                {showDropdown && (
-                    <ul className={navbarStyles.dropdownContent}>
-                    <li>
-                        <Link href="/estimates/electricity">Electricity Emission</Link>
+            {shouldRenderNavigation && (
+                <ul className={navbarStyles.navList}>
+                    <li className={`${navbarStyles.navItem} ${navbarStyles.estimates}`} 
+                        onMouseEnter={handleEstimatesMouseEnter}
+                        onMouseLeave={handleEstimatesMouseLeave}>
+                        Estimates
+                        {showDropdown && (
+                            <ul className={navbarStyles.dropdownContent}>
+                                <li>
+                                    <Link href="/estimates/electricity">Electricity Emission</Link>
+                                </li>
+                                <li>
+                                    <Link href="/estimates/flights">Flights Emission</Link>
+                                </li>
+                                <li>
+                                    <Link href="/estimates/fuels">Fuel Combustion Emission</Link>
+                                </li>
+                            </ul>
+                        )}
                     </li>
-                    <li>
-                        <Link href="/estimates/flights">Flights Emission</Link>
+                    <li className={navbarStyles.navItem} onClick={() => router.push('/about')}>About</li>
+                    <li className={navbarStyles.navItem} onClick={() => router.push('/carbon-emissions')}>Carbon Emissions</li>
+                    <li className={navbarStyles.navItem} onClick={handleLogin}>
+                        {isAuthenticated ? <button className={navbarStyles.btn}>Sign Out</button> : <button className={navbarStyles.btn}>Get Started</button>}
                     </li>
-                    <li>
-                        <Link href="/estimates/vehicles">Vehicle Emission</Link>
-                    </li>
-                    <li>
-                        <Link href="/estimates/fuels">Fuel Combustion Emission</Link>
-                    </li>
-                    </ul>
-                )}
-                </li>
-                <li className={navbarStyles.navItem} onClick={handleAboutClick}>About</li>
-                <li className={navbarStyles.navItem} onClick={handleLearnClick}>Carbon Emissions</li>
-                <li className={navbarStyles.navItem} onClick={handleLogin}>
-                    {isAuthenticated ? <button className={navbarStyles.btn}>Sign Out</button> : <button className={navbarStyles.btn}>Get Started</button>}
-                </li>
-            </ul>
+                </ul>
+            )}
         </nav>
-
     )
 }
 
 export default Navbar;
-
-//DONE//TODO: If the user is logged in change the "Get Started" to Sign Out

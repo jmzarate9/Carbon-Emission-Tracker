@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Navbar from '/components/Navbar';
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { firebaseAuth } from "../firebase-config/config";
+import Swal from 'sweetalert2';
 import useAuth from "@/components/auth";
 import loginStyles from "@/styles/Login.module.css";
+
 
 const Login = () => {
     const router = useRouter();
@@ -19,64 +22,85 @@ const Login = () => {
         try {
             await signInWithEmailAndPassword(firebaseAuth, email, password);
             router.push('/');
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Successfully Logged In!',
+                showConfirmButton: false,
+                timer: 1500
+            });
         } catch (error) {
-            setErrorMessage(error?.message ?? 'Failed to log in');
+            const errorCode = error.code;
+            if (errorCode === 'auth/invalid-email' || errorCode === 'auth/user-not-found') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Invalid Email',
+                    text: 'The email address you entered is incorrect.',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+            } else if (errorCode === 'auth/wrong-password') {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Incorrect Password',
+                    text: 'The password you entered is incorrect.',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+            } else {
+                setErrorMessage(error?.message ?? 'Failed to log in');
+            }
         }
     }
     
-    useAuth(); // authentication
+    useAuth();
     
 
     return (
-        <div className={loginStyles.outerContainer}>
-            <div className={loginStyles.innerContainer}>
-                <div className={loginStyles.content}>
-                    <form className={loginStyles.form}>
-                    <h2>Log In</h2>
-                        <div className={loginStyles.formGroup}>
-                            <label htmlFor="Email">Email</label>
-                            <input 
-                                className={loginStyles.input} 
-                                placeholder="email@example.com" 
-                                type="email" 
-                                id="email" 
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                required
-                            />
-                        </div>
-                        <div className={loginStyles.formGroup}>
-                            <label htmlFor="password">Password</label>
-                            <input 
-                                className={loginStyles.input} 
-                                placeholder="Password" 
-                                type="password" 
-                                id="password" 
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                required
-                            />
-                        </div>
-                        {errorMessage.length > 0 ? <p>{errorMessage}</p> : <></>}
-                        <button onClick={loginUser} type="submit" className={loginStyles.loginButton}>
-                        Sign In
-                        </button>
-                        <p>Don't have an account? <Link className={loginStyles.hyperlink} href="/register">Register Now</Link></p>
-                    </form>
-                    <blockquote className={loginStyles.blockquote}>
-                        The first step in reducing carbon emissions is knowing where you stand. 
-                        Our tracking software empowers you to make informed choices for a better tomorrow.
-                    </blockquote>
+        <>
+            <Navbar />
+            <div className={loginStyles.outerContainer}>
+                <div className={loginStyles.innerContainer}>
+                    <div className={loginStyles.content}>
+                        <form className={loginStyles.form}>
+                        <h2>Log In</h2>
+                            <div className={loginStyles.formGroup}>
+                                <label htmlFor="Email">Email</label>
+                                <input 
+                                    className={loginStyles.input} 
+                                    placeholder="email@example.com" 
+                                    type="email" 
+                                    id="email" 
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    required
+                                />
+                            </div>
+                            <div className={loginStyles.formGroup}>
+                                <label htmlFor="password">Password</label>
+                                <input 
+                                    className={loginStyles.input} 
+                                    placeholder="Password" 
+                                    type="password" 
+                                    id="password" 
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    required
+                                />
+                            </div>
+                            <button onClick={loginUser} type="submit" className={loginStyles.loginButton}>
+                            Sign In
+                            </button>
+                            <p>Don't have an account? <Link className={loginStyles.hyperlink} href="/register">Register Now</Link></p>
+                        </form>
+                        <blockquote className={loginStyles.blockquote}>
+                        Change starts with awareness. Our emissions tracker cultivates mindfulness about your environmental impact.
+                        </blockquote>
+                    </div>
                 </div>
             </div>
-        </div>
+        </>
     );
 }
 
 export default Login;
-
-//DONE // TODO: if the user press the "Sign In" button they should be redirected to the home page
-//DONE//TODO: if the user already signed in, remove the "get started" button and change it to sign out
-//DONE//TODO: if the user cant access the "estimates" if they are not signed in or registered.
-//TODO: create a swal or any similar to sweetalert
-//TODO: Also show the necessary information like (email, password not found or match)

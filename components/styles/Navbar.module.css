@@ -79,17 +79,22 @@
 }
 
 .btn {
-    background-color: #DE834D;
-    color: #fff;
+    background-image: linear-gradient(to right, #FF8008 0%, #FFC837  51%, #FF8008  100%);
     padding: 1rem 2rem;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: #fff;            
     border-radius: 10px;
-    text-decoration: none;
     border: none;
     width: 10rem;
-    justify-content: center;
-    align-items: center;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 .btn:hover {
-    background-color: #F79540;
+    background-position: right center;
+    color: #fff;
+    text-decoration: none;
 }
+

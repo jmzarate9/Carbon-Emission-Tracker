@@ -4,6 +4,7 @@ import Navbar from '/components/Navbar';
 import flightStyles from '@/styles/FlightEstimate.module.css';
 import { estimateFlight } from '@/pages/api/estimate';
 import useAuth from '@/components/auth'; 
+import Swal from 'sweetalert2';
 
 const FlightEstimate = () => {
     useAuth();
@@ -44,6 +45,12 @@ const FlightEstimate = () => {
                 }
             } catch (error) {
                 console.error("Error fetching data:", error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'An error occurred while fetching the estimate. Please check your inputs and try again.',
+                    confirmButtonText: 'OK'
+                });
             } finally {
                 setIsLoading(false);
             }
@@ -129,7 +136,6 @@ const FlightEstimate = () => {
                             <div className={flightStyles.resultContainer}>
                                 <h4>Estimated CO2 Emission:</h4>
                             {isLoading && <p>Loading...</p>}
-                            {/* <Spinner thickness='4px' speed='0.65s' emptyColor='gray.200' color='blue.500' size='xl' /> */}
                             {estimateResult && (
                                 <div className={flightStyles.result}>
                                 <p>carbon_g: {estimateResult.carbon_g}</p>
@@ -141,7 +147,6 @@ const FlightEstimate = () => {
                             )}
                         </div>
                     </div>
-                    <Link href="/">Back to Home</Link>
                 </div>
         </div>
         </>

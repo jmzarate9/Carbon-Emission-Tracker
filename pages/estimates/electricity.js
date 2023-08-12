@@ -4,6 +4,7 @@ import Navbar from '/components/Navbar';
 import electricityStyles from '@/styles/ElectricityEstimate.module.css';
 import { estimateElectricity } from '@/pages/api/estimate';
 import useAuth from '@/components/auth';
+import Swal from 'sweetalert2';
 
 const Electricity = () => {
     useAuth();
@@ -13,6 +14,7 @@ const Electricity = () => {
     const [state, setState] = useState('');
     const [estimateResult, setEstimateResult] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
+    const [errorText, setErrorText] = useState('');
 
     const handleEstimate = async () => {
         setIsLoading(true);
@@ -27,15 +29,21 @@ const Electricity = () => {
 
         try {
             const responseData = await estimateElectricity(data);
-
+    
             if (responseData && responseData.data) {
                 setEstimateResult(responseData.data.attributes);
-                console.log("result: " + estimateResult);
             } else {
                 console.error("Response data or data.attributes is undefined.");
             }
         } catch (error) {
             console.error("Error fetching data:", error);
+            
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'An error occurred while fetching the estimate. Please check your inputs and try again.',
+                confirmButtonText: 'OK'
+            });
         } finally {
             setIsLoading(false);
         }
@@ -113,7 +121,6 @@ const Electricity = () => {
                             <div className={electricityStyles.resultContainer}>
                                 <h4>Estimated CO2 Emission:</h4>
                             {isLoading && <p>Loading...</p>}
-                            {/* <Spinner thickness='4px' speed='0.65s' emptyColor='gray.200' color='blue.500' size='xl' /> */}
                             {estimateResult && (
                                 <div className={electricityStyles.result}>
                                 <p>carbon_g: {estimateResult.carbon_g}</p>
@@ -124,7 +131,6 @@ const Electricity = () => {
                             )}
                         </div>
                     </div>
-                    <Link href="/">Back to Home</Link>
                 </div>
         </div>
         </>
