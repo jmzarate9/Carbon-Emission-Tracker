@@ -45,6 +45,10 @@
     color: #333;
 }
 
+.resourcesList li {
+    margin-bottom: 1rem;
+}
+
 .resourcesList a {
     color: #000;
     text-decoration: none;

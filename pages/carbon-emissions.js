@@ -41,9 +41,19 @@ const CarbonEmissionPage = () => {
                         For more in-depth information about carbon emissions and their impact, you can explore the following research papers and resources:
                     </p>
                     <ul className={emissionStyles.resourcesList}>
-                        <li><a href="link-to-research-paper-1" target="_blank" rel="noopener noreferrer">Research Paper 1</a></li>
-                        <li><a href="link-to-research-paper-2" target="_blank" rel="noopener noreferrer">Research Paper 2</a></li>
-                        {/* Add more research paper links as needed */}
+                        <li><a href="https://faint-class-d56.notion.site/Carbon-Interface-Methodology-d788fff61c724a48b100e0f7d77c0c57" target="_blank" rel="noopener noreferrer">Carbon Interface - Methodology</a></li>
+
+                        <li><a href="https://www.epa.gov/climateleadership/scope-1-and-scope-2-inventory-guidance" target="_blank" rel="noopener noreferrer">US EPA Scope 1 and Scope 2 Inventory Guidance</a></li>
+
+                        <li><a href="https://www.canada.ca/en/environment-climate-change/services/environmental-indicators/greenhouse-gas-emissions.html" target="_blank" rel="noopener noreferrer">Greenhouse gas emissions</a></li>
+
+                        <li><a href="https://ghgprotocol.org/online-training" target="_blank" rel="noopener noreferrer">Greenhouse Gas Protocol Courses Materials</a></li>
+
+                        <li><a href="https://www.udemy.com/course/scope-1-greenhouse-gas-emissions-calculation-methodology/" target="_blank" rel="noopener noreferrer">HPBS BV Environmental Consulting (Udemy) – Scope 1: Greenhouse Gases Emissions Calculation Methodology (Online Course)</a></li>
+
+                        <li><a href="https://www.udemy.com/course/scope-2-greenhouse-gases-emission-calculation-methodology/" target="_blank" rel="noopener noreferrer">HPBS BV Environmental Consulting (Udemy) – Scope 2: Greenhouse Gases Emissions Calculation Methodology (Online Course)</a></li>
+
+                        <li><a href="https://www.udemy.com/course/scope-3-ghg-emissions-calculation-methodology/" target="_blank" rel="noopener noreferrer">HPBS BV Environmental Consulting (Udemy) – Scope 3: Greenhouse Gases Emissions Calculation Methodology (Online Course)</a></li>
                     </ul>
                 </div>
             </div>
