@@ -19,8 +19,7 @@ const Register = () => {
 
     const registerUser = async (e) => {
         e.preventDefault();
-        setErrorMessage("");
-    
+
         if (password !== confirmPassword) {
             Swal.fire({
                 icon: 'error',
@@ -30,7 +29,17 @@ const Register = () => {
             });
             return;
         }
-    
+
+        if (password.length < 6) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Password Too Short',
+                text: 'Password should be at least 6 characters long.',
+                confirmButtonText: 'OK'
+            });
+            return;
+        }
+
         try {
             await createUserWithEmailAndPassword(firebaseAuth, email, password);
             Swal.fire({
@@ -39,7 +48,7 @@ const Register = () => {
                 showConfirmButton: false,
                 timer: 2000
             }).then(() => {
-                router.push('/login');
+                router.push('/');
             });
         } catch (error) {
             if (error.code === 'auth/invalid-email') {
@@ -57,7 +66,13 @@ const Register = () => {
                     confirmButtonText: 'OK'
                 });
             } else {
-                setErrorMessage(error?.message ?? 'Failed to register');
+                console.error(error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Registration Failed',
+                    text: 'An error occurred during registration. Please try again later.',
+                    confirmButtonText: 'OK'
+                });
             }
         }
     };

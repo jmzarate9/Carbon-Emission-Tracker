@@ -21,13 +21,13 @@ const Login = () => {
         setErrorMessage("");
         try {
             await signInWithEmailAndPassword(firebaseAuth, email, password);
-            router.push('/');
-
             Swal.fire({
                 icon: 'success',
                 title: 'Successfully Logged In!',
                 showConfirmButton: false,
                 timer: 1500
+            }).then(() =>  {
+                router.push('/');
             });
         } catch (error) {
             const errorCode = error.code;
