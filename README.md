@@ -1,9 +1,9 @@
 # Carbon Emission Tracker
 
-![Landing Page](landing-page.png)
-![Carbon-Emission Page](carbon-emission.png)
-![Login Page](login-page.png)
-![Register Page](Regsiter.png)
+![Landing Page](public/landing-page.png)
+![Carbon-Emission Page](public/carbon-emission.png)
+![Login Page](public/login-page.png)
+![Register Page](public/register-page.png)
 
 ## Description
 
@@ -51,9 +51,9 @@ The Carbon Emission Tracker project was created to address the need for easy and
 3. Enter the required data (e.g., electricity unit, flight distance, etc.).
 4. Click the "Get Estimate" button to calculate and display the estimated carbon emissions.
 
-![Electricity Emission Estimates](electricity.png)
-![Flight Emission Estimates](flight.png)
-![Fuel Combustion Emission Estimates](fuel.png)
+![Electricity Emission Estimates](public/electricity.png)
+![Flight Emission Estimates](public/flight.png)
+![Fuel Combustion Emission Estimates](public/fuel.png)
 
 ## Future Enhancements
 
