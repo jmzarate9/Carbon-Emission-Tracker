@@ -61,3 +61,4 @@ The Carbon Emission Tracker project was created to address the need for easy and
 - Expand the range of activities covered, including dietary choices, waste management, and more.
 - Provide tips and suggestions for reducing carbon emissions associated with various activities.
 - Implement user accounts to allow users to save and track their emission estimates over time.
+- Expand the scope of the project by incorporating carbon emission calculations for the Philippines.
